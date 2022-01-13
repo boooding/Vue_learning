@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>To do List</title>
+    <script src="https://unpkg.com/vue@next"></script>
+</head>
+<body>
+    <div id="root"></div>
+</body>
+<script>
+     Vue.createApp({
+         data() {
+            return {
+                inputValue: '',
+                list: [
+                   "todo1",
+                   "todo2"
+                ]
+            }
+         },
+         methods: {
+            handleClick() {
+                if (this.inputValue) {
+                    this.list.push(this.inputValue)
+                    this.inputValue = '';
+                }
+            },
+         },
+         template: `
+            <div>
+                <input type="text" v-model="inputValue"/>
+                <button v-on:click="handleClick">add</button>
+                <ul>
+                  <li v-for="(item, index) of list">
+                    {{index}} : {{item}}
+                  </li>
+                </ul>
+            </div>
+         `
+     }).mount('#root')
+</script>
+</html>
