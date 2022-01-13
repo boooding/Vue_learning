@@ -12,18 +12,23 @@
     Vue.createApp({
         data() {
             return {
+                show: true,
                 content: 'Hello world'
             }
         },
         methods: {
-            handleBtnClick() {
+            handleBtnClick1() {
                 this.content = this.content.split('').reverse().join('');
+            },
+            handleBtnClick2() {
+                this.show = !this.show;
             }
         },
         template: `
             <div>
-              {{content}}
-              <button v-on:click="handleBtnClick">reverse</button>
+              <span v-if="show">{{content}}</span>
+              <button v-on:click="handleBtnClick1">reverse</button>
+              <button v-on:click="handleBtnClick2">display/hide</button>
             </div>
         `
     }).mount('#root')
