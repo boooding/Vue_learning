@@ -10,8 +10,21 @@
 </body>
 <script>
     Vue.createApp({
+        data() {
+            return {
+                content: 'Hello world'
+            }
+        },
+        methods: {
+            handleBtnClick() {
+                this.content = this.content.split('').reverse().join('');
+            }
+        },
         template: `
-            <div>Hello, world</div>
+            <div>
+              {{content}}
+              <button v-on:click="handleBtnClick">reverse</button>
+            </div>
         `
     }).mount('#root')
 </script>
