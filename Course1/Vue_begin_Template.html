@@ -1,10 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>HelloWorld</title>
+    <script src="https://unpkg.com/vue@next"></script>
+    <style>
+        .red {
+            color: red;
+        }
+        .green {
+            color: green;
+        }
+    </style>
 </head>
 <body>
-$END$
+<div id="root"></div>
 </body>
+<script>
+    const app = Vue.createApp({
+        data() {
+            return {
+                classString: 'red',
+                classObject: {
+                    red: true,
+                    green: false
+                },
+                classArray: [
+                    'red',
+                    'green',
+                    { brown: false }
+                ]
+            }
+        },
+        methods: {
+
+        },
+        template: `
+            <div>
+                <div :class="classObject">
+                    class
+                </div>
+                <demo class="red"/>
+            </div>
+        `
+    })
+    app.component(
+        'demo', {
+            template: `
+                <div :class="$attrs.class">one</div>
+                <div>two</div>
+            `
+        }
+    )
+    const vm = app.mount('#root')
+</script>
 </html>
