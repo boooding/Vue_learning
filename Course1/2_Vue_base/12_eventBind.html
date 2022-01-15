@@ -1,10 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>HelloWorld</title>
+    <script src="https://unpkg.com/vue@next"></script>
+    <style>
+
+    </style>
 </head>
 <body>
-$END$
+<div id="root"></div>
 </body>
+<script>
+    //事件修饰符: stop, prevent， capture, self, once, passive
+    //按键修饰符: enter,tab，delete ,es, up,down，left， right
+    //鼠标修饰符: left, right, middle
+    const app = Vue.createApp({
+        data() {
+            return {
+                counter: 0
+            }
+        },
+        methods: {
+            handleButtonClock(num, event) {
+                console.log(event.target);
+                this.counter += num;
+            },
+            handle1() {
+
+            },
+            handle2() {
+
+            }
+        },
+        template: `
+          <div>
+          {{ counter }}
+              <button @click="handleButtonClock(2, $event)">button</button>
+              <button @click="handleButtonClock(2, $event)">button</button>
+          </div>
+        `
+    })
+    app.component(
+        'demo', {
+            template: `
+
+            `
+        }
+    )
+    const vm = app.mount('#root')
+</script>
 </html>
