@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>LifeCycle</title>
+    <script src="https://unpkg.com/vue@next"></script>
+
+</head>
+<body>
+    <div id="root"></div>
+</body>
+<script>
+    const app = Vue.createApp({
+        data() {
+            return {
+                message: 'hello, world'
+            }
+        },
+        beforeCreate() {
+            console.log("beforeCreate")
+        },
+        created() {
+            console.log("created")
+        },
+        beforeMount() {
+            console.log("beforeMount")
+        },
+        mounted() {
+          console.log("mounted")
+        },
+        beforeUpdate() {},
+        updated() {},
+        beforeUnmount() {},
+        unmounted() {},
+        template: `
+          <div>
+            {{message}}
+          </div>
+        `
+    });
+    const vm = app.mount('#root')
+</script>
+</html>
