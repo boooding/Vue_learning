@@ -4,16 +4,32 @@
     <meta charset="UTF-8">
     <title>HelloWorld</title>
     <script src="https://unpkg.com/vue@next"></script>
+    <style>
+        .red {
+            color: red;
+        }
+        .green {
+            color: green;
+        }
+    </style>
 </head>
 <body>
 <div id="root"></div>
 </body>
 <script>
-    Vue.createApp({
+    const app = Vue.createApp({
         data() {
             return {
-                show: true,
-                content: 'Hello world'
+                classString: 'red',
+                classObject: {
+                    red: true,
+                    green: false
+                },
+                classArray: [
+                    'red',
+                    'green',
+                    { brown: false }
+                ]
             }
         },
         methods: {
@@ -21,8 +37,21 @@
         },
         template: `
             <div>
+                <div :class="classObject">
+                    class
+                </div>
+                <demo class="red"/>
             </div>
         `
-    }).mount('#root')
+    })
+    app.component(
+        'demo', {
+            template: `
+                <div :class="$attrs.class">one</div>
+                <div>two</div>
+            `
+        }
+    )
+    const vm = app.mount('#root')
 </script>
 </html>
