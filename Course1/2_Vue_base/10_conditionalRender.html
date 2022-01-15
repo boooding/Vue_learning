@@ -2,9 +2,39 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>HelloWorld</title>
+    <script src="https://unpkg.com/vue@next"></script>
+    <style>
+
+    </style>
 </head>
 <body>
-
+<div id="root"></div>
 </body>
+<script>
+    const app = Vue.createApp({
+        data() {
+            return {
+                show: false
+            }
+        },
+        methods: {
+
+        },
+        template: `
+            <div>
+                <div v-if="show">if</div>
+                <div v-else>else</div>
+            </div>
+        `
+    })
+    app.component(
+        'demo', {
+            template: `
+
+            `
+        }
+    )
+    const vm = app.mount('#root')
+</script>
 </html>
