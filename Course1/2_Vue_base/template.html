@@ -39,6 +39,10 @@
                 @click="handleClick"
                 :[name] = "title"
               ></div>
+              <form
+                action="https://www.baidu.com"
+                @click.prevent="handleClick"
+              ></form>
             </div>
         `
     }).mount('#root')
