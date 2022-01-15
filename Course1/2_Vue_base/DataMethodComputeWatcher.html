@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HelloWorld</title>
+    <script src="https://unpkg.com/vue@next"></script>
+</head>
+<body>
+    <div id="root"></div>
+</body>
+<script>
+    Vue.createApp({
+        // data
+        data() {
+            return {
+                count: 2,
+                price: 5
+            }
+        },
+        // computed
+        // cache
+        computed: {
+            total() {
+                return this.count * this.price
+            }
+        },
+        // methods
+        methods: {},
+        // watch syn.
+        watch: {
+            price(current, previous) {
+
+            }
+        },
+        template: `
+            <div>
+                {{total}}
+            </div>
+        `
+    }).mount('#root')
+
+</script>
+</html>
