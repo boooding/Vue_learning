@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>template</title>
+    <script src="https://unpkg.com/vue@next"></script>
+</head>
+<body>
+<div id="root"></div>
+</body>
+<script>
+    Vue.createApp({
+        data() {
+            return {
+                html: '<strong>Hello Vue</strong>',
+                title: 'v-bind',
+                show: true,
+                name: 'title'
+            }
+        },
+        methods: {
+            handleClick() {}
+        },
+        template: `
+            <div>
+              <div v-html="html"></div>
+              <div v-bind:title="title">title bind</div>
+              <div :title="title">title bind</div>
+
+              <div>{{'a'+'b'}}</div>
+              <div>{{Math.max(1,2)}}</div>
+<!--              消除无用渲染-->
+              <div v-once>{{}}</div>
+              <div v-if="show">true</div>
+
+              <div v-on:click="handleClick"></div>
+              <div @click="handleClick"></div>
+              <div
+                @click="handleClick"
+                :[name] = "title"
+              ></div>
+            </div>
+        `
+    }).mount('#root')
+</script>
+</html>
