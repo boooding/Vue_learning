@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HelloWorld</title>
+    <script src="https://unpkg.com/vue@next"></script>
+    <style>
+
+    </style>
+</head>
+<body>
+<div id="root"></div>
+</body>
+<script>
+    const app = Vue.createApp({
+        data() {
+            return {
+                list: [
+                    'hiphop',
+                    'house',
+                    'soul dance'
+                ],
+                objectList: {
+                    T0: 'house',
+                    T1: 'hiphop',
+                    T2: 'soul dance'
+                }
+            }
+        },
+        methods: {
+
+        },
+        template: `
+            <div>
+                <div v-for="(item, index) in list">
+                    item: {{item}} index: {{index}}
+                </div>
+                ________
+                <div v-for="(value, key) in objectList">
+                    value: {{value}} key: {{key}}
+                </div>
+            </div>
+        `
+    })
+    app.component(
+        'demo', {
+            template: `
+
+            `
+        }
+    )
+    const vm = app.mount('#root')
+</script>
+</html>
