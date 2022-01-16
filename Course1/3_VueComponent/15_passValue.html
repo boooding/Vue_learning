@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HelloWorld</title>
+    <script src="https://unpkg.com/vue@next"></script>
+    <style>
+
+    </style>
+</head>
+<body>
+<div id="root"></div>
+</body>
+<script>
+    // v-bind="params"
+    // passValue: content-data
+    // receiveValue: contentData
+    // child-component can only read props
+    const app = Vue.createApp({
+        data() {
+            return {
+                num: 10
+            }
+        },
+        methods: {
+
+        },
+        template: `
+            <div>
+                <demo content="hello"/>
+                <demo :content="num" />
+
+            </div>
+        `
+    })
+    app.component(
+        'demo', {
+            props: {
+                content: {
+                    type: Number,
+                    validator: function (value) {
+                        return value < 100
+                    },
+                    default: function () {
+                        return 10
+                    },
+                    required: false
+                }
+            },
+            template: `
+                <div>{{typeof content}}</div>
+            `
+        }
+    )
+    const vm = app.mount('#root')
+</script>
+</html>
