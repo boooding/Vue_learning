@@ -2,9 +2,106 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>HelloWorld</title>
+    <script src="https://unpkg.com/vue@next"></script>
+    <style>
+
+    </style>
 </head>
 <body>
-
+<div id="root"></div>
 </body>
+<script>
+    // v-model.lazy
+    // v-model.number
+    // v-model.trim
+    const app = Vue.createApp({
+        data() {
+            return {
+                inputValue: 'inputValue',
+                textAreaValue: 'textAreaValue',
+                checkboxValue: true,
+                selectedDance: [],
+                selectedRadio: '',
+                selectedOption: '',
+                selectedMultiOption: [],
+                optionList: [
+                    {
+                        text: "hiphop", value: "hiphop"
+                    },
+                    {
+                        text: "house", value: "house"
+                    }
+                ]
+            }
+        },
+        methods: {
+
+        },
+        template: `
+            <div>
+                <div>
+                    {{inputValue}}
+                    <input v-model="inputValue">
+                </div>
+                <br>
+                <div>
+                    {{textAreaValue}}
+                    <textarea v-model="textAreaValue"/>
+                </div>
+                <br>
+                <div>
+                    {{checkboxValue}}
+                    <input type="checkbox" v-model="checkboxValue">
+                </div>
+                <br>
+                <div>
+                    {{selectedDance}}
+                    hiphop: <input type="checkbox" v-model="selectedDance" value="hiphop">
+                    house: <input type="checkbox" v-model="selectedDance" value="house">
+                </div>
+                <br>
+                <div>
+                    {{selectedRadio}}
+                    hiphop: <input type="radio" v-model="selectedRadio" value="hiphop">
+                    house:  <input type="radio" v-model="selectedRadio" value="house">
+                </div>
+                <br>
+                <div>
+                    {{selectedOption}}
+                    <select v-model="selectedOption">
+                        <option disabled value="">Please Select</option>
+                        <option value="house">house</option>
+                        <option value="hiphop">hiphop</option>
+                    </select>
+                </div>
+                <br>
+                <div>
+                    {{selectedMultiOption}}
+                    <select v-model="selectedMultiOption" multiple>
+                        <option disabled value="">Please Select</option>
+                        <option value="house">house</option>
+                        <option value="hiphop">hiphop</option>
+                    </select>
+                </div>
+                <br>
+                <div>
+                    {{selectedMultiOption}}
+                    <select v-model="selectedMultiOption" multiple>
+                        <option disabled value="">Please Select</option>
+                        <option v-for="item in optionList" :value="item.value">{{item.text}}</option>
+                    </select>
+                </div>
+            </div>
+        `
+    })
+    app.component(
+        'demo', {
+            template: `
+
+            `
+        }
+    )
+    const vm = app.mount('#root')
+</script>
 </html>
