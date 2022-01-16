@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HelloWorld</title>
+    <script src="https://unpkg.com/vue@next"></script>
+    <style>
+
+    </style>
+</head>
+<body>
+<div id="root"></div>
+</body>
+<script>
+    const Counter = {
+        data() {
+            return
+        },
+        template: ``
+    }
+    const app = Vue.createApp({
+        data() {
+            return {
+
+            }
+        },
+        methods: {
+
+        },
+        components: {
+            counter: Counter
+        },
+        template: `
+            <div>
+
+            </div>
+        `
+    })
+    app.component(
+        'demo', {
+            template: `
+
+            `
+        }
+    )
+    const vm = app.mount('#root')
+</script>
+</html>
