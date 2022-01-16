@@ -1,10 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>HelloWorld</title>
+    <script src="https://unpkg.com/vue@next"></script>
+    <style>
+
+    </style>
 </head>
 <body>
-$END$
+<div id="root"></div>
 </body>
+<script>
+    const app = Vue.createApp({
+        data() {
+            return {
+                count: 1
+            }
+        },
+        methods: {
+            handleAddOne() {
+                this.count += 1;
+            }
+        },
+        template: `
+            <div>
+                <demo :count="count" @add-one="handleAddOne"/>
+            </div>
+        `
+    })
+    app.component(
+        'demo', {
+            props: ['count'],
+            emits: ['addOne'],
+            methods: {
+                addOne() {
+                    // props:['modelValue']
+                    // this.$emit('update:modelValue')
+                    this.$emit('addOne')
+                }
+            },
+            template: `
+                <div @click="addOne">{{count}}</div>
+            `
+        }
+    )
+    const vm = app.mount('#root')
+</script>
 </html>
