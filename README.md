@@ -1,3 +1,6 @@
 # Vue_learning
 Vue learning
-## Course1 
+
+## Vue list
+1. vue dom (learning)
+2. vue router (learning)
